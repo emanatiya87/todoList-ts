@@ -1,8 +1,8 @@
 import Mission from "./mission";
-import useTodoStore from "../store/todoStore";
+import UseTodoStore from "../store/todoStore";
 import type { Task } from "../store/todoStore";
 export default function List() {
-  const inputTasks = useTodoStore((state) => state.allTasks);
+  const inputTasks = UseTodoStore((state) => state.allTasks);
   const tasks = inputTasks.map((t: Task) => <Mission input={t} key={t.id} />);
   return (
     <>

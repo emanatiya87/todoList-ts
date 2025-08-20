@@ -1,6 +1,6 @@
 // import ReactDOM from "react-dom";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import useTodoStore from "../store/todoStore";
+import UseTodoStore from "../store/todoStore";
 import { useNavigate } from "react-router-dom";
 
 // components
@@ -8,12 +8,10 @@ import Input from "./Input";
 import Btn from "./Btn";
 import Select from "./SelectInput";
 import Toast from "./Toast";
-import { Route } from "react-router-dom";
-
 export default function addingForm() {
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-  const addTask = useTodoStore((state) => state.addTask);
-  const setShowToast = useTodoStore((state) => state.setShowToast);
+  const addTask = UseTodoStore((state) => state.addTask);
+  const setShowToast = UseTodoStore((state) => state.setShowToast);
   const navigate = useNavigate();
   // use form
   const {

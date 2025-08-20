@@ -38,7 +38,7 @@ interface TodoStore {
 }
 
 // 3. Create the store with persist
-const useTodoStore = create<TodoStore>()(
+const UseTodoStore = create<TodoStore>()(
   persist(
     (set) => ({
       allTasks: [],
@@ -103,4 +103,4 @@ const useTodoStore = create<TodoStore>()(
   )
 );
 
-export default useTodoStore;
+export default UseTodoStore;

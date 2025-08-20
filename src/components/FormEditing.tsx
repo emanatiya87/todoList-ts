@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useForm, type SubmitHandler } from "react-hook-form";
-import useTodoStore from "../store/todoStore";
+import UseTodoStore from "../store/todoStore";
 
 // components
 import Input from "./Input";
@@ -11,11 +11,11 @@ import { useNavigate } from "react-router-dom";
 
 export default function FormEditing() {
   const { id: taskId } = useParams<{ id?: string }>();
-  const inputTasks = useTodoStore((state) => state.allTasks);
-  const arrayOfAlltasks = useTodoStore((state) => state.inputTasks);
-  const setInputTasks = useTodoStore((state) => state.setInputTasks);
-  const setAllTasks = useTodoStore((state) => state.setAllTasks);
-  const setShowToast = useTodoStore((state) => state.setShowToast);
+  const inputTasks = UseTodoStore((state) => state.allTasks);
+  const arrayOfAlltasks = UseTodoStore((state) => state.inputTasks);
+  const setInputTasks = UseTodoStore((state) => state.setInputTasks);
+  const setAllTasks = UseTodoStore((state) => state.setAllTasks);
+  const setShowToast = UseTodoStore((state) => state.setShowToast);
   const navigate = useNavigate();
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
   const task = inputTasks.find((t) => taskId == t.id);

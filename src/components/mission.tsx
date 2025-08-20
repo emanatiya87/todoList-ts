@@ -1,6 +1,6 @@
 import ChipPriority from "./Chip";
 import type { Task } from "../store/todoStore";
-import useTodoStore from "../store/todoStore";
+import UseTodoStore from "../store/todoStore";
 import { Link } from "react-router-dom";
 interface MissionProps {
   input: Task;
@@ -12,8 +12,8 @@ import { MdDeleteForever } from "react-icons/md";
 import { IoMdRemoveCircleOutline } from "react-icons/io";
 
 export default function Mission({ input }: MissionProps) {
-  const deleteTask = useTodoStore((state) => state.deleteTask);
-  const completeTask = useTodoStore((state) => state.completeTask);
+  const deleteTask = UseTodoStore((state) => state.deleteTask);
+  const completeTask = UseTodoStore((state) => state.completeTask);
   return (
     <>
       <tr

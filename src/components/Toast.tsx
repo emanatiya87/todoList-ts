@@ -1,12 +1,12 @@
 import React from "react";
-import useTodoStore from "../store/todoStore";
+import UseTodoStore from "../store/todoStore";
 
 interface ToastProps {
   text: string;
 }
 export default function Toast({ text }: ToastProps) {
-  const showToast = useTodoStore((state) => state.showToast);
-  const setShowToast = useTodoStore((state) => state.setShowToast);
+  const showToast = UseTodoStore((state) => state.showToast);
+  const setShowToast = UseTodoStore((state) => state.setShowToast);
 
   if (!showToast) return null;
   return (

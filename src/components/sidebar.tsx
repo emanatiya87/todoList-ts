@@ -5,15 +5,15 @@ import { FaFlag } from "react-icons/fa";
 import Input from "./Input";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import useTodoStore from "../store/todoStore";
+import UseTodoStore from "../store/todoStore";
 export default function ResponsiveSidebar() {
   // open the menu
-  const isOpen = useTodoStore((state) => state.isOpenMenu);
-  const setIsOpen = useTodoStore((state) => state.setIsOpenMenu);
+  const isOpen = UseTodoStore((state) => state.isOpenMenu);
+  const setIsOpen = UseTodoStore((state) => state.setIsOpenMenu);
   //all tasks from store
-  const inputTasks = useTodoStore((state) => state.allTasks);
-  const arrayOfAlltasks = useTodoStore((state) => state.inputTasks);
-  const setAllTasks = useTodoStore((state) => state.setAllTasks);
+  const inputTasks = UseTodoStore((state) => state.allTasks);
+  const arrayOfAlltasks = UseTodoStore((state) => state.inputTasks);
+  const setAllTasks = UseTodoStore((state) => state.setAllTasks);
 
   //to get number of every priorty
   function filteredNumber(state) {
