@@ -24,6 +24,9 @@ interface TodoStore {
   showToast: boolean;
   setShowToast: (value: boolean) => void;
 
+  isOpenMenu: boolean;
+  setIsOpenMenu: (value: boolean) => void;
+
   deleteTask: (id: string) => void;
   completeTask: (id: string) => void;
   addTask: (
@@ -47,22 +50,27 @@ const useTodoStore = create<TodoStore>()(
       showToast: false,
       setShowToast: (value) => set({ showToast: value }),
 
+      isOpenMenu: false,
+      setIsOpenMenu: (value) => set({ isOpenMenu: value }),
+
       deleteTask: (id) =>
         set((state) => {
-          const newTasks = state.allTasks.filter((t) => t.id !== id);
+          const newTasks = state.inputTasks.filter((t) => t.id !== id);
           return {
             inputTasks: newTasks,
             allTasks: newTasks,
-            deletingTaskId: null,
           };
         }),
 
       completeTask: (id) =>
         set((state) => {
-          const updatedTasks = state.allTasks.map((t) =>
+          const updatedTasks = state.inputTasks.map((t) =>
             t.id === id ? { ...t, isComplete: !t.isComplete } : t
           );
-          return { allTasks: updatedTasks };
+          return {
+            inputTasks: updatedTasks,
+            allTasks: updatedTasks,
+          };
         }),
 
       addTask: (title, body, dueDate, priorty) =>
@@ -75,7 +83,7 @@ const useTodoStore = create<TodoStore>()(
             dueDate,
             priorty,
           };
-          const updatedTasks = [...state.allTasks, newTask];
+          const updatedTasks = [...state.inputTasks, newTask];
           return {
             inputTasks: updatedTasks,
             allTasks: updatedTasks,
@@ -85,6 +93,12 @@ const useTodoStore = create<TodoStore>()(
     {
       name: "todo-storage",
       partialize: (state) => ({ allTasks: state.allTasks }),
+      onRehydrateStorage: () => (state) => {
+        if (state) {
+          // Only at start: mirror allTasks into inputTasks
+          state.setInputTasks(state.allTasks);
+        }
+      },
     }
   )
 );

@@ -7,12 +7,12 @@ import Input from "./Input";
 import Btn from "./Btn";
 import Select from "./SelectInput";
 import Toast from "./Toast";
-import { Route } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function FormEditing() {
   const { id: taskId } = useParams<{ id?: string }>();
   const inputTasks = useTodoStore((state) => state.allTasks);
+  const arrayOfAlltasks = useTodoStore((state) => state.inputTasks);
   const setInputTasks = useTodoStore((state) => state.setInputTasks);
   const setAllTasks = useTodoStore((state) => state.setAllTasks);
   const setShowToast = useTodoStore((state) => state.setShowToast);
@@ -28,7 +28,7 @@ export default function FormEditing() {
   } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    const newTasks = inputTasks.map((t) =>
+    const newTasks = arrayOfAlltasks.map((t) =>
       t.id === taskId ? { ...t, ...data } : t
     );
     setInputTasks(newTasks);
@@ -73,7 +73,7 @@ export default function FormEditing() {
           register={register("dueDate", {
             min: { value: today, message: "Can't set past date !!" },
           })}
-          value=""
+          value={task?.dueDate}
           error={errors.dueDate?.message}
         />
         {/* priority */}

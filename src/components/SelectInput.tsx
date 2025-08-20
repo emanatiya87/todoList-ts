@@ -5,7 +5,6 @@ interface SelectPros {
   error?: string;
   value?: string;
 }
-
 export default function Select({
   tagName,
   register,
