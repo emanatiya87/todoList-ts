@@ -3,10 +3,14 @@ import { FaCalendarDay } from "react-icons/fa6";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { FaFlag } from "react-icons/fa";
 import Input from "./Input";
-import { useForm } from "react-hook-form";
+import { useForm, type SubmitHandler } from "react-hook-form";
 import { Link } from "react-router-dom";
 import UseTodoStore from "../store/todoStore";
+
 export default function ResponsiveSidebar() {
+  interface IFormInput {
+    search: string;
+  }
   // open the menu
   const isOpen = UseTodoStore((state) => state.isOpenMenu);
   const setIsOpen = UseTodoStore((state) => state.setIsOpenMenu);
@@ -16,22 +20,22 @@ export default function ResponsiveSidebar() {
   const setAllTasks = UseTodoStore((state) => state.setAllTasks);
 
   //to get number of every priorty
-  function filteredNumber(state) {
-    let filtered = inputTasks.filter((t) => {
-      return t.priorty == state;
+  function filteredNumber(statue: string) {
+    const filtered = arrayOfAlltasks.filter((t) => {
+      return t.priorty == statue;
     });
     return filtered.length;
   }
-  function filterPriorties(state) {
-    let filtered = arrayOfAlltasks.filter((t) => t.priorty == state);
+  function filterPriorties(statue: string) {
+    const filtered = arrayOfAlltasks.filter((t) => t.priorty == statue);
     setAllTasks(filtered);
   }
   // use form for search
   const { register, handleSubmit, reset } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    let searchedontent = data.search.trim();
-    let filtered = inputTasks.filter((t) => {
-      return t.title.includes(searchedontent);
+    const searchedcontent = data.search.trim();
+    const filtered = inputTasks.filter((t) => {
+      return t.title.includes(searchedcontent);
     });
     setAllTasks(filtered);
     reset();
@@ -116,7 +120,7 @@ export default function ResponsiveSidebar() {
               <li
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-300 dark:hover:bg-gray-700 group"
                 onClick={() => {
-                  let filtered = arrayOfAlltasks.filter(
+                  const filtered = arrayOfAlltasks.filter(
                     (t) => t.dueDate == new Date().toISOString().split("T")[0]
                   );
                   setAllTasks(filtered);
