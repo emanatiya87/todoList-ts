@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UseTodoStore from "../store/todoStore";
+import type { IFormInput } from "./types";
 
 // components
 import Input from "./Input";

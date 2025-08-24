@@ -1,3 +1,5 @@
+import type { UseFormRegisterReturn } from "react-hook-form";
+
 interface SelectPros {
   tagName: string;
   register: UseFormRegisterReturn;

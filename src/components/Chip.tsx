@@ -39,7 +39,7 @@ export default function ChipPriority({
 
   return (
     <Chip
-      label={label}
+      label={label ?? "Medium"}
       sx={{
         boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
         backgroundColor: handlePriorityBg(label),

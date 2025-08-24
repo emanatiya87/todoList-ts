@@ -2,12 +2,14 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
 import UseTodoStore from "../store/todoStore";
 import { useNavigate } from "react-router-dom";
+import type { IFormInput } from "./types";
 
 // components
 import Input from "./Input";
 import Btn from "./Btn";
 import Select from "./SelectInput";
 import Toast from "./Toast";
+
 export default function addingForm() {
   const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
   const addTask = UseTodoStore((state) => state.addTask);
@@ -22,7 +24,12 @@ export default function addingForm() {
   } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    addTask(data.title, data.body, data.dueDate, data.priorty);
+    addTask(
+      data.title,
+      data.body ?? "",
+      data.dueDate ?? "",
+      data.priorty ?? "Medium"
+    );
     reset();
     setShowToast(true);
     setTimeout(() => {

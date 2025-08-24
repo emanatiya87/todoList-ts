@@ -43,7 +43,7 @@ export default function Mission({ input }: MissionProps) {
         <td className="px-6 py-4">
           {" "}
           <ChipPriority
-            label={input.priorty}
+            label={input.priorty ?? "Medium"}
             filter={() => () => input.priorty}
           />
         </td>

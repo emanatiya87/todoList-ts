@@ -10,7 +10,7 @@ export interface Task {
   body: string;
   isComplete: boolean;
   dueDate?: string;
-  priorty: string;
+  priorty?: string;
 }
 
 // 2. Define the shape of the Store

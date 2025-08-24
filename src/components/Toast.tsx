@@ -1,4 +1,3 @@
-import React from "react";
 import UseTodoStore from "../store/todoStore";
 
 interface ToastProps {
