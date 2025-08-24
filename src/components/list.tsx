@@ -28,7 +28,18 @@ export default function List() {
               </th>
             </tr>
           </thead>
-          <tbody>{tasks}</tbody>
+
+          <tbody>
+            {tasks.length > 0 ? (
+              tasks
+            ) : (
+              <tr>
+                <td colSpan={5} className="py-4 text-center text-2xl font-bold">
+                  Add a new task to do!!
+                </td>
+              </tr>
+            )}
+          </tbody>
         </table>
       </div>
     </>
