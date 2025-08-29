@@ -1,69 +1,29 @@
-# React + TypeScript + Vite
+📌 todoList-ts
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+todoList-ts is a modern To-Do List application built with React, TypeScript, and Vite, featuring Zustand for efficient and scalable state management. The app provides a clean and intuitive interface for managing tasks, ensuring both simplicity for users and maintainability for developers.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Task Management – Add, delete, and update tasks seamlessly.
 
-## Expanding the ESLint configuration
+State Management with Zustand – Lightweight and performant global state handling.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+TypeScript Integration – Strong typing for better code reliability and maintainability.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+TailwindCSS Styling – Responsive and modern UI with utility-first CSS.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+Vite Build Tool – Fast development experience with hot module replacement (HMR).
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Deployed on Vercel – Accessible live demo: todo-list-ts-sandy.vercel.app
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🛠️ Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Frontend: React + TypeScript
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+State Management: Zustand
+
+Styling: TailwindCSS
+
+Build Tool: Vite
+
+Deployment: Vercel
